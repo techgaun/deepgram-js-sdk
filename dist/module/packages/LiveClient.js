@@ -12,7 +12,13 @@ export class LiveClient extends AbstractWsClient {
     const url = new URL(endpoint, this.baseUrl);
     url.protocol = url.protocol.toLowerCase().replace(/(http)(s)?/gi, "ws$2");
     appendSearchParams(url.searchParams, this.transcriptionOptions);
-    this._socket = new WebSocket(url.toString(), ["token", this.key]);
+    // this._socket = new WebSocket(url.toString(), ["token", this.key]);
+    // @ts-ignore
+    this._socket = new WebSocket(url.toString(), null, {
+      headers: {
+        Authorization: "Token " + this.key,
+      },
+    });
     this._socket.onopen = () => {
       this.emit(LiveTranscriptionEvents.Open, this);
     };

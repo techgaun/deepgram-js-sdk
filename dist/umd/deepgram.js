@@ -2247,7 +2247,9 @@
               const s = new URL(n, this.baseUrl);
               (s.protocol = s.protocol.toLowerCase().replace(/(http)(s)?/gi, "ws$2")),
                 (0, i.appendSearchParams)(s.searchParams, this.transcriptionOptions),
-                (this._socket = new WebSocket(s.toString(), ["token", this.key])),
+                (this._socket = new WebSocket(s.toString(), null, {
+                  headers: { Authorization: "Token " + this.key },
+                })),
                 (this._socket.onopen = () => {
                   this.emit(a.LiveTranscriptionEvents.Open, this);
                 }),
