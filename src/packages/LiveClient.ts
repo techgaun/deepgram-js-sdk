@@ -3,7 +3,6 @@ import { appendSearchParams } from "../lib/helpers";
 import { DeepgramError } from "../lib/errors";
 import { DEFAULT_OPTIONS } from "../lib/constants";
 import { LiveConnectionState, LiveTranscriptionEvents } from "../lib/enums";
-import { w3cwebsocket } from "websocket";
 
 import type {
   LiveSchema,
@@ -16,7 +15,7 @@ import type {
 } from "../lib/types";
 
 export class LiveClient extends AbstractWsClient {
-  private _socket: w3cwebsocket;
+  private _socket: WebSocket;
 
   constructor(
     protected key: string,
@@ -30,7 +29,7 @@ export class LiveClient extends AbstractWsClient {
     url.protocol = url.protocol.toLowerCase().replace(/(http)(s)?/gi, "ws$2");
     appendSearchParams(url.searchParams, this.transcriptionOptions);
 
-    this._socket = new w3cwebsocket(url.toString(), ["token", this.key]);
+    this._socket = new WebSocket(url.toString(), ["token", this.key]);
 
     this._socket.onopen = () => {
       this.emit(LiveTranscriptionEvents.Open, this);
