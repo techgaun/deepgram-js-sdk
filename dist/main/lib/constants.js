@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DEFAULT_OPTIONS =
   exports.DEFAULT_FETCH_OPTIONS =
@@ -10,7 +11,10 @@ exports.DEFAULT_OPTIONS =
 const helpers_1 = require("./helpers");
 const version_1 = require("./version");
 exports.NODE_VERSION =
-  (process === null || process === void 0 ? void 0 : process.versions.node) || "Unknown";
+  ((_a = process === null || process === void 0 ? void 0 : process.versions) === null ||
+  _a === void 0
+    ? void 0
+    : _a.node) || "Unknown";
 exports.DEFAULT_HEADERS = {
   "Content-Type": `application/json`,
   "X-Client-Info": `@deepgram/sdk; ${(0, helpers_1.isBrowser)() ? "browser" : "server"}; v${

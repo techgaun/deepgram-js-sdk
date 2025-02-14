@@ -1692,6 +1692,7 @@
         },
         678: (e, t, r) => {
           "use strict";
+          var n;
           Object.defineProperty(t, "__esModule", { value: !0 }),
             (t.DEFAULT_OPTIONS =
               t.DEFAULT_FETCH_OPTIONS =
@@ -1700,17 +1701,20 @@
               t.DEFAULT_HEADERS =
               t.NODE_VERSION =
                 void 0);
-          const n = r(610),
-            i = r(506);
+          const i = r(610),
+            s = r(506);
           (t.NODE_VERSION =
-            (null === process || void 0 === process ? void 0 : "20.12.2") || "Unknown"),
+            (null === (n = null === process || void 0 === process ? void 0 : process.versions) ||
+            void 0 === n
+              ? void 0
+              : n.node) || "Unknown"),
             (t.DEFAULT_HEADERS = {
               "Content-Type": "application/json",
-              "X-Client-Info": `@deepgram/sdk; ${(0, n.isBrowser)() ? "browser" : "server"}; v${
-                i.version
+              "X-Client-Info": `@deepgram/sdk; ${(0, i.isBrowser)() ? "browser" : "server"}; v${
+                s.version
               }`,
-              "User-Agent": `@deepgram/sdk/${i.version} ${
-                (0, n.isBrowser)() ? "javascript" : `node/${t.NODE_VERSION}`
+              "User-Agent": `@deepgram/sdk/${s.version} ${
+                (0, i.isBrowser)() ? "javascript" : `node/${t.NODE_VERSION}`
               }`,
             }),
             (t.DEFAULT_URL = "https://api.deepgram.com"),

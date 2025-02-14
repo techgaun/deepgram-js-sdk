@@ -1,7 +1,11 @@
+var _a;
 import { isBrowser } from "./helpers";
 import { version } from "./version";
 export const NODE_VERSION =
-  (process === null || process === void 0 ? void 0 : process.versions.node) || "Unknown";
+  ((_a = process === null || process === void 0 ? void 0 : process.versions) === null ||
+  _a === void 0
+    ? void 0
+    : _a.node) || "Unknown";
 export const DEFAULT_HEADERS = {
   "Content-Type": `application/json`,
   "X-Client-Info": `@deepgram/sdk; ${isBrowser() ? "browser" : "server"}; v${version}`,
